@@ -9,12 +9,18 @@ import {
   navInfo,
   navLoginIcon,
   navMenuIcon,
+  sideMenuLogin,
+  sideMenuClose,
+  sideMenuDownArrow,
 } from "./img";
 
 const Nav = () => {
   const currencies = ["USD", "EUR", "UAH", "GBP", "BIRR", "CHF"];
+  const languages = ["Eng", "Amh", "Gur", "Ibo", "Ido", "Kru"];
   const [isMiniMenuOpen, setIsMiniMenuOpen] = useState(false);
+  const [isMiniMenuLanguageOpen, setIsMiniMenuLanguageOpen] = useState(false);
   const [currentCurrency, setCurrentCurrency] = useState(0);
+  const [currentLanguage, setCurrentLanguage] = useState(0);
   /**
    * Hook that alerts clicks outside of the passed ref
    */
@@ -26,6 +32,7 @@ const Nav = () => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
           setIsMiniMenuOpen(false);
+          setIsMiniMenuLanguageOpen(false);
         }
       }
       // Bind the event listener
@@ -37,7 +44,9 @@ const Nav = () => {
     }, [ref]);
   }
   const miniMenuWrapper = useRef(null);
+  const miniMenuLanguageWrapper = useRef(null);
   useOutsideAlerter(miniMenuWrapper);
+  useOutsideAlerter(miniMenuLanguageWrapper);
 
   return (
     <div className="desktop-nav">
@@ -63,9 +72,42 @@ const Nav = () => {
       </div>
       <div className="frame-2">
         <div className="currency-and">
-          <div className="group">
-            <div className="text-wrapper-2">Eng</div>
+          <div
+            className="group"
+            onMouseEnter={() => setIsMiniMenuLanguageOpen(true)}
+          >
+            <div className="text-wrapper-2">{languages[currentLanguage]}</div>
             <img className="polygon" src={navDownArrow} />
+            {isMiniMenuLanguageOpen && (
+              <div className="mini-menu-language">
+                <div className="div-wrapper">
+                  <div class="text-wrapper">Select a language</div>
+                </div>
+                <div className="div">
+                  <img className="img" src="img/image-2.svg" />
+                  <p className="english">
+                    <span className="span">English</span>{" "}
+                    <span className="text-wrapper-2">&nbsp;</span>
+                  </p>
+                </div>
+                <div className="div-2">
+                  <img className="img" src="img/image-5.svg" />{" "}
+                  <div className="text-wrapper-3">German</div>
+                </div>
+                <div className="div-2">
+                  <img className="img" src="img/image-4.svg" />
+                  <div className="text-wrapper-3">Chinese</div>
+                </div>
+                <div className="div-2">
+                  <img className="img" src="img/image-3.svg" />{" "}
+                  <div className="text-wrapper-3">Italian</div>
+                </div>
+                <div className="div-3">
+                  <img className="img" src="img/image.svg" />{" "}
+                  <div className="text-wrapper-3">Hebrew</div>
+                </div>
+              </div>
+            )}
           </div>
           <div className="group-2">
             <div
@@ -90,7 +132,7 @@ const Nav = () => {
                   }}
                 >
                   <p className="USD">
-                    <span className="span">USD</span>{" "}
+                    <span className="span">{currencies[0]}</span>{" "}
                     <span className="text-wrapper-2">&nbsp;</span>
                   </p>
                 </div>
@@ -104,7 +146,7 @@ const Nav = () => {
                     setIsMiniMenuOpen(false);
                   }}
                 >
-                  <div className="text-wrapper-5">EUR</div>
+                  <div className="text-wrapper-5">{currencies[1]}</div>
                 </div>
                 <div
                   className={`div ${
@@ -115,7 +157,7 @@ const Nav = () => {
                     setIsMiniMenuOpen(false);
                   }}
                 >
-                  <div className="text-wrapper-5">UAH</div>
+                  <div className="text-wrapper-5">{currencies[2]}</div>
                 </div>
                 <div
                   className={`div ${
@@ -126,7 +168,7 @@ const Nav = () => {
                     setIsMiniMenuOpen(false);
                   }}
                 >
-                  <div className="text-wrapper-5">GBP</div>
+                  <div className="text-wrapper-5">{currencies[3]}</div>
                 </div>
                 <div
                   className={`div ${
@@ -137,7 +179,7 @@ const Nav = () => {
                     setIsMiniMenuOpen(false);
                   }}
                 >
-                  <div className="text-wrapper-5">BIRR</div>
+                  <div className="text-wrapper-5">{currencies[4]}</div>
                 </div>
                 <div
                   className={`div-wrapper-2 ${
@@ -148,7 +190,7 @@ const Nav = () => {
                     setIsMiniMenuOpen(false);
                   }}
                 >
-                  <div className="text-wrapper-5">CHF</div>
+                  <div className="text-wrapper-5">{currencies[5]}</div>
                 </div>
               </div>
             )}
@@ -164,6 +206,38 @@ const Nav = () => {
       </div>
       <div className="nav-menu-icon-holder">
         <img src={navMenuIcon} alt="" className="nav-menu-icon" />
+      </div>
+      <div className="side-menu">
+        <div className="div-2">
+          <img className="img" src={sideMenuClose} />{" "}
+          <img className="log-in" src={sideMenuLogin} />
+        </div>
+        <div className="side-menu-div">
+          <div className="div-wrapper">
+            <div className="text-wrapper">Cooking Classes</div>
+          </div>
+          <div className="div-wrapper">
+            <div className="text-wrapper">Become a Chef</div>
+          </div>
+          <div className="div-wrapper">
+            <div className="text-wrapper">Group Cooking</div>
+          </div>
+          <div className="div-wrapper">
+            <div className="text-wrapper">Support</div>
+          </div>
+          <div className="language-and-wrapper">
+            <div className="language-and">
+              <div className="text-wrapper">English</div>
+              <img className="" src={sideMenuDownArrow} />
+            </div>
+          </div>
+          <div className="currency-and-wrapper">
+            <div className="currency-and">
+              <div className="text-wrapper">Currency</div>
+              <img className="polygon" src={sideMenuDownArrow} />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
