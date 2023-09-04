@@ -9,7 +9,11 @@ import navMenuIcon from "./nav-menu-icon.svg";
 import sideMenuLogin from "./side-menu-log-in.svg";
 import sideMenuClose from "./side-menu-close.svg";
 import sideMenuDownArrow from "./side-menu-down-arrow.svg";
-
+import englishFlag from "./english_flag.svg";
+import germanFlag from "./german_flag.svg";
+import chineseFlag from "./chinese_flag.svg";
+import italianFlag from "./italian_flag.svg";
+import hebrewFlag from "./hebrew_flag.svg";
 export {
   navVector1,
   navVector2,
@@ -22,4 +26,9 @@ export {
   sideMenuLogin,
   sideMenuClose,
   sideMenuDownArrow,
+  englishFlag,
+  germanFlag,
+  chineseFlag,
+  italianFlag,
+  hebrewFlag,
 };

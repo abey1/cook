@@ -142,10 +142,16 @@
   gap: 5px;
   padding: 16px;
   position: relative;
+  top: 20px;
   background-color: #ffffff;
   border-radius: 6px;
   border: 1px solid;
   border-color: var(--primary-lighten);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1),
+    0px 4px 8px 0px rgba(0, 0, 0, 0.1), 0px 15px 15px 0px rgba(0, 0, 0, 0.09),
+    0px 33px 20px 0px rgba(0, 0, 0, 0.05), 0px 59px 23px 0px rgba(0, 0, 0, 0.01),
+    0px 92px 26px 0px rgba(0, 0, 0, 0);
+  z-index: 1000;
 }
 
 .mini-menu-language .div-wrapper {
@@ -169,13 +175,17 @@
   line-height: normal;
 }
 
+.mini-menu-language .active {
+  background-color: var(--primary-lighten);
+}
+
 .mini-menu-language .div {
+  cursor: pointer;
   display: flex;
   align-items: center;
   padding: 8px 12px;
   align-self: stretch;
   width: 100%;
-  background-color: var(--primary-lighten);
   border-bottom-width: 1px;
   border-bottom-style: solid;
   gap: 10px;
@@ -210,6 +220,7 @@
 }
 
 .mini-menu-language .div-2 {
+  cursor: pointer;
   display: flex;
   align-items: center;
   padding: 8px 12px;
@@ -224,7 +235,7 @@
 }
 
 .mini-menu-language .text-wrapper-3 {
-  position: relative;
+  /* position: relative; */
   width: fit-content;
   margin-top: -1px;
   font-family: "Outfit-Regular", Helvetica;
@@ -236,6 +247,7 @@
 }
 
 .mini-menu-language .div-3 {
+  cursor: pointer;
   display: flex;
   align-items: center;
   padding: 8px 12px;
@@ -266,7 +278,7 @@
   gap: 5px;
   padding: 16px;
   position: absolute;
-  top: 30px;
+  top: 20px;
   background-color: #ffffff;
   border-radius: 6px;
   border: 1px solid;
@@ -411,6 +423,8 @@
   letter-spacing: 0;
   line-height: 18px;
   white-space: nowrap;
+
+  margin-top: 2px;
 }
 
 .desktop-nav .polygon-2 {
@@ -452,18 +466,32 @@
 }
 
 .desktop-nav .nav-menu-icon-holder {
+  cursor: pointer;
   display: none;
 }
 
 /* side menu */
 .side-menu {
+  display: gone;
   position: absolute;
-  display: none;
-  right: 0;
+  right: -510px;
   top: 0;
   width: 310px;
   height: 100vh;
   background-color: var(--primary);
+  transition: right 0.5s;
+  transition-timing-function: ease-in-out;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.side-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.side-menu-open {
+  right: 0;
 }
 
 .side-menu .side-menu-div {
@@ -486,6 +514,7 @@
 }
 
 .side-menu .text-wrapper {
+  cursor: pointer;
   position: relative;
   width: fit-content;
   margin-top: -1px;
@@ -508,6 +537,36 @@
   flex: 0 0 auto;
 }
 
+.language-and-wrapper .language-arrow-rotate {
+  transform: rotate(180deg);
+  transition: transform 0.5s ease-in-out;
+}
+.language-and-wrapper .language-arrow-return {
+  transform: rotate(0deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.language-and-wrapper .side-menu-language-sub-menu {
+  padding-left: 1rem;
+  margin-top: -0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  height: 0;
+  transition: height 0.3s ease-in-out;
+}
+.language-and-wrapper .side-menu-language-sub-menu-open {
+  height: 190px;
+}
+.language-and-wrapper .side-menu-language-sub-menu .side-menu-single-language {
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+  margin-top: 15px;
+  font-family: "Outfit-Regular", Helvetica;
+}
+
 .side-menu .language-and {
   display: inline-flex;
   align-items: center;
@@ -525,6 +584,38 @@
   padding: 10px;
   position: relative;
   flex: 0 0 auto;
+}
+
+.currency-and-wrapper .side-menu-currency-sub-menu {
+  padding-left: 1rem;
+  margin-top: -0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  height: 0;
+  transition: height 0.3s ease-in-out;
+  margin-bottom: 2rem;
+}
+
+.currency-and-wrapper .currency-arrow-rotate {
+  transform: rotate(180deg);
+  transition: transform 0.5s ease-in-out;
+}
+.currency-and-wrapper .currency-arrow-return {
+  transform: rotate(0deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.currency-and-wrapper .side-menu-currency-sub-menu-open {
+  height: 230px;
+}
+.currency-and-wrapper .side-menu-currency-sub-menu .side-menu-single-currency {
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+  margin-top: 15px;
+  font-family: "Outfit-Regular", Helvetica;
 }
 
 .side-menu .currency-and {
@@ -557,6 +648,10 @@
   height: 25px;
 }
 
+.side-menu .side-menu-close {
+  cursor: pointer;
+}
+
 .side-menu .log-in {
   position: relative;
   width: 33px;
@@ -576,6 +671,9 @@
     display: none;
   }
   .desktop-nav .nav-menu-icon-holder {
+    display: block;
+  }
+  .side-menu {
     display: block;
   }
 }

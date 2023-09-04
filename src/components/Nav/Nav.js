@@ -12,15 +12,30 @@ import {
   sideMenuLogin,
   sideMenuClose,
   sideMenuDownArrow,
+  englishFlag,
+  germanFlag,
+  chineseFlag,
+  italianFlag,
+  hebrewFlag,
 } from "./img";
 
 const Nav = () => {
   const currencies = ["USD", "EUR", "UAH", "GBP", "BIRR", "CHF"];
-  const languages = ["Eng", "Amh", "Gur", "Ibo", "Ido", "Kru"];
+  const languages = ["Eng", "Ger", "Chi", "Itl", "Heb"];
+  const languagesLong = ["English", "German", "Chinese", "Italian", "Hebrew"];
   const [isMiniMenuOpen, setIsMiniMenuOpen] = useState(false);
   const [isMiniMenuLanguageOpen, setIsMiniMenuLanguageOpen] = useState(false);
   const [currentCurrency, setCurrentCurrency] = useState(0);
   const [currentLanguage, setCurrentLanguage] = useState(0);
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+  const [sideSubMenuLanguage, setSideSubMenuLanguage] = useState(false);
+  const [sideSubMenuCurrency, setSideSubMenuCurrency] = useState(false);
+
+  // handles side menu close on window resize
+  const handleResize = () => {
+    window.innerWidth >= 1052 && setIsSideMenuOpen(false);
+  };
+  window.onresize = handleResize;
   /**
    * Hook that alerts clicks outside of the passed ref
    */
@@ -31,8 +46,7 @@ const Nav = () => {
        */
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          setIsMiniMenuOpen(false);
-          setIsMiniMenuLanguageOpen(false);
+          setIsSideMenuOpen(false);
         }
       }
       // Bind the event listener
@@ -43,10 +57,8 @@ const Nav = () => {
       };
     }, [ref]);
   }
-  const miniMenuWrapper = useRef(null);
-  const miniMenuLanguageWrapper = useRef(null);
-  useOutsideAlerter(miniMenuWrapper);
-  useOutsideAlerter(miniMenuLanguageWrapper);
+  const sideMenuRef = useRef(null);
+  useOutsideAlerter(sideMenuRef);
 
   return (
     <div className="desktop-nav">
@@ -75,36 +87,82 @@ const Nav = () => {
           <div
             className="group"
             onMouseEnter={() => setIsMiniMenuLanguageOpen(true)}
+            onMouseLeave={() => setIsMiniMenuLanguageOpen(false)}
           >
             <div className="text-wrapper-2">{languages[currentLanguage]}</div>
             <img className="polygon" src={navDownArrow} />
             {isMiniMenuLanguageOpen && (
-              <div className="mini-menu-language">
+              <div
+                className="mini-menu-language"
+                onMouseLeave={() => setIsMiniMenuLanguageOpen(false)}
+              >
                 <div className="div-wrapper">
                   <div class="text-wrapper">Select a language</div>
                 </div>
-                <div className="div">
-                  <img className="img" src="img/image-2.svg" />
+                <div
+                  className={`div ${currentLanguage === 0 && "active"}`}
+                  onClick={() => {
+                    setCurrentLanguage(0);
+                    setIsMiniMenuLanguageOpen(false);
+                  }}
+                >
+                  <img className="img" src={englishFlag} />
                   <p className="english">
-                    <span className="span">English</span>{" "}
+                    <span className="span">{languagesLong[0]}</span>{" "}
                     <span className="text-wrapper-2">&nbsp;</span>
                   </p>
                 </div>
-                <div className="div-2">
-                  <img className="img" src="img/image-5.svg" />{" "}
-                  <div className="text-wrapper-3">German</div>
+                <div
+                  className={`div-2 ${currentLanguage === 1 && "active"}`}
+                  onClick={() => {
+                    setCurrentLanguage(1);
+                    setIsMiniMenuLanguageOpen(false);
+                  }}
+                >
+                  <img className="img" src={germanFlag} />{" "}
+                  <p className="english">
+                    <span className="span">{languagesLong[1]}</span>{" "}
+                    <span className="text-wrapper-2">&nbsp;</span>
+                  </p>
                 </div>
-                <div className="div-2">
-                  <img className="img" src="img/image-4.svg" />
-                  <div className="text-wrapper-3">Chinese</div>
+                <div
+                  className={`div-2 ${currentLanguage === 2 && "active"}`}
+                  onClick={() => {
+                    setCurrentLanguage(2);
+                    setIsMiniMenuLanguageOpen(false);
+                  }}
+                >
+                  <img className="img" src={chineseFlag} />{" "}
+                  <p className="english">
+                    <span className="span">{languagesLong[2]}</span>{" "}
+                    <span className="text-wrapper-2">&nbsp;</span>
+                  </p>
                 </div>
-                <div className="div-2">
-                  <img className="img" src="img/image-3.svg" />{" "}
-                  <div className="text-wrapper-3">Italian</div>
+                <div
+                  className={`div-2 ${currentLanguage === 3 && "active"}`}
+                  onClick={() => {
+                    setCurrentLanguage(3);
+                    setIsMiniMenuLanguageOpen(false);
+                  }}
+                >
+                  <img className="img" src={italianFlag} />{" "}
+                  <p className="english">
+                    <span className="span">{languagesLong[3]}</span>{" "}
+                    <span className="text-wrapper-2">&nbsp;</span>
+                  </p>
                 </div>
-                <div className="div-3">
-                  <img className="img" src="img/image.svg" />{" "}
-                  <div className="text-wrapper-3">Hebrew</div>
+                <div
+                  className={`div-3 ${currentLanguage === 4 && "active"}`}
+                  onClick={() => {
+                    setCurrentLanguage(4);
+                    setIsMiniMenuLanguageOpen(false);
+                  }}
+                >
+                  <img className="img" src={hebrewFlag} />{" "}
+                  <p className="english">
+                    <span className="span">{languagesLong[4]}</span>{" "}
+                    <span className="text-wrapper-2">&nbsp;</span>
+                  </p>
                 </div>
               </div>
             )}
@@ -112,13 +170,18 @@ const Nav = () => {
           <div className="group-2">
             <div
               className="text-wrapper-3"
-              onClick={() => setIsMiniMenuOpen(true)}
+              onMouseEnter={() => setIsMiniMenuOpen(true)}
+              onMouseLeave={() => setIsMiniMenuOpen(false)}
             >
               {currencies[currentCurrency]}
             </div>
             <img className="polygon-2" src={navDownArrow} />
             {isMiniMenuOpen && (
-              <div ref={miniMenuWrapper} className="mini-menu">
+              <div
+                className="mini-menu"
+                onMouseEnter={() => setIsMiniMenuOpen(true)}
+                onMouseLeave={() => setIsMiniMenuOpen(false)}
+              >
                 <div className="div-wrapper">
                   <div className="text-wrapper">Select a currency</div>
                 </div>
@@ -204,12 +267,26 @@ const Nav = () => {
           <img className="log-in" src={navLoginIcon} />
         </div>
       </div>
-      <div className="nav-menu-icon-holder">
+      <div
+        className="nav-menu-icon-holder"
+        onClick={() => {
+          setIsSideMenuOpen(true);
+          console.log(window.innerWidth);
+        }}
+      >
         <img src={navMenuIcon} alt="" className="nav-menu-icon" />
       </div>
-      <div className="side-menu">
+
+      <div
+        className={`side-menu ${isSideMenuOpen && "side-menu-open"} `}
+        ref={sideMenuRef}
+      >
         <div className="div-2">
-          <img className="img" src={sideMenuClose} />{" "}
+          <img
+            className="img side-menu-close"
+            src={sideMenuClose}
+            onClick={() => setIsSideMenuOpen(false)}
+          />{" "}
           <img className="log-in" src={sideMenuLogin} />
         </div>
         <div className="side-menu-div">
@@ -226,15 +303,75 @@ const Nav = () => {
             <div className="text-wrapper">Support</div>
           </div>
           <div className="language-and-wrapper">
-            <div className="language-and">
+            <div
+              className="language-and"
+              onClick={() => setSideSubMenuLanguage(!sideSubMenuLanguage)}
+            >
               <div className="text-wrapper">English</div>
-              <img className="" src={sideMenuDownArrow} />
+              <img
+                className={`${
+                  sideSubMenuLanguage
+                    ? "language-arrow-rotate"
+                    : "language-arrow-return"
+                }`}
+                src={sideMenuDownArrow}
+              />
+            </div>
+            <div
+              className={`side-menu-language-sub-menu ${
+                sideSubMenuLanguage && "side-menu-language-sub-menu-open"
+              }`}
+            >
+              {languagesLong.map((lan, index) => {
+                return (
+                  <div
+                    className="side-menu-single-language"
+                    onClick={() => {
+                      setCurrentLanguage(index);
+                      setSideSubMenuLanguage(!sideSubMenuLanguage);
+                      setIsSideMenuOpen(false);
+                    }}
+                  >
+                    {lan}
+                  </div>
+                );
+              })}
             </div>
           </div>
           <div className="currency-and-wrapper">
-            <div className="currency-and">
+            <div
+              className="language-and"
+              onClick={() => setSideSubMenuCurrency(!sideSubMenuCurrency)}
+            >
               <div className="text-wrapper">Currency</div>
-              <img className="polygon" src={sideMenuDownArrow} />
+              <img
+                className={`${
+                  sideSubMenuCurrency
+                    ? "currency-arrow-rotate"
+                    : "currency-arrow-return"
+                }`}
+                src={sideMenuDownArrow}
+              />
+            </div>
+            <div
+              className={`side-menu-currency-sub-menu ${
+                sideSubMenuCurrency && "side-menu-currency-sub-menu-open"
+              }`}
+            >
+              {currencies.map((cur, index) => {
+                return (
+                  <div
+                    className="side-menu-single-currency"
+                    onClick={() => {
+                      setCurrentCurrency(index);
+                      setSideSubMenuCurrency(!sideSubMenuCurrency);
+                      setIsSideMenuOpen(false);
+                    }}
+                  >
+                    {cur}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
