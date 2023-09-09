@@ -1,0 +1,95 @@
+.stats_main_holder {
+  position: relative;
+  border: 1px var(--Primary-Lighten, #ffdbb8) solid;
+  margin: 150px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .stats_main {
+    position: absolute;
+    padding: 12px 23px;
+    width: fit-content;
+    display: flex;
+    gap: 29px;
+    border-radius: 16px;
+    border: 1px solid var(--Primary-Lighten, #ffdbb8);
+    background: var(--Secondary-Background, #fffdf4);
+    .stats_left {
+      display: flex;
+      gap: 29px;
+      .stats_single {
+        display: flex;
+        padding: 20px 50px;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        flex: 1 0 0;
+        .stats_single_top {
+          color: var(--Primary, #d27722);
+          font-family: Rubik;
+          font-size: 40px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          letter-spacing: -0.8px;
+          display: flex;
+          gap: 10px;
+        }
+        .stats_single_bottom {
+          color: var(--Text-Color-Secondary, #403d39);
+          font-family: Outfit;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 150%; /* 24px */
+        }
+      }
+      @media screen and (max-width: 415px) {
+        flex-direction: column;
+      }
+    }
+    .stats_right {
+      display: flex;
+      gap: 29px;
+      .stats_single {
+        display: flex;
+        padding: 20px 50px;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        flex: 1 0 0;
+        .stats_single_top {
+          color: var(--Primary, #d27722);
+          font-family: Rubik;
+          font-size: 40px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          letter-spacing: -0.8px;
+          display: flex;
+          gap: 10px;
+        }
+        .stats_single_bottom {
+          color: var(--Text-Color-Secondary, #403d39);
+          font-family: Outfit;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 150%; /* 24px */
+        }
+      }
+      @media screen and (max-width: 415px) {
+        flex-direction: column;
+      }
+    }
+    @media screen and (max-width: 940px) {
+      flex-direction: column;
+    }
+  }
+  @media screen and (max-width: 940px) {
+    margin-top: 200px;
+  }
+  @media screen and (max-width: 415px) {
+    margin-top: 350px;
+  }
+}

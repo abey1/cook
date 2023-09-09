@@ -1,0 +1,218 @@
+.hero {
+  margin-top: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .hero_left {
+    .hero_heading_1 {
+      color: #252422;
+      font-family: Rubik;
+      font-size: 61px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 113.3%; /* 69.113px */
+      letter-spacing: -2.44px;
+      margin-right: 20%;
+      .hero_heading_special {
+        color: #d27722;
+        font-family: Pacifico;
+        font-size: 61px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 113.3%;
+        letter-spacing: -2.44px;
+      }
+      @media screen and (max-width: 1052px) {
+        text-align: center;
+        margin: 3rem 0;
+      }
+    }
+    .hero_paragraph {
+      color: var(--Text-Color-Secondary, #403d39);
+      font-family: Outfit;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 160%; /* 25.6px */
+      margin-right: 20%;
+      text-align: justify;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      @media screen and (max-width: 1052px) {
+        text-align: center;
+        margin-left: 20%;
+      }
+    }
+    .video_starter {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      color: var(--Text-Color, #252422);
+      font-family: Outfit;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      gap: 1rem;
+      margin-bottom: 24px;
+      @media screen and (max-width: 1052px) {
+        justify-content: center;
+      }
+    }
+    .hero_btn_holder {
+      display: flex;
+      gap: 2rem;
+      .find_your_tutor_btn {
+        cursor: pointer;
+        display: flex;
+        padding: 8px 16px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        border-radius: 4px;
+        background: var(--Primary, #d27722);
+        color: #fff;
+        font-family: Outfit;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+      .join_our_chefs {
+        cursor: pointer;
+        display: flex;
+        padding: 8px 16px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        color: var(--Primary, #d27722);
+        font-family: Outfit;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        border-radius: 4px;
+        border: 2px solid var(--Primary, #d27722);
+      }
+      @media screen and (max-width: 1052px) {
+        justify-content: center;
+      }
+    }
+    @media screen and (max-width: 500px) {
+      margin-top: 50px;
+    }
+    @media screen and (max-width: 284px) {
+      margin-top: 0;
+    }
+  }
+  .hero_right {
+    position: relative;
+    .hero_img {
+      object-fit: cover;
+      border-radius: 30px;
+      @media screen and (max-width: 500px) {
+        width: 100%;
+        border-radius: 0;
+        flex-shrink: 0;
+        border-radius: 0;
+      }
+    }
+    .hero_ornament_right {
+      position: absolute;
+      top: 80%;
+      right: -5%;
+      @media screen and (max-width: 665px) {
+        display: none;
+      }
+    }
+    .testimonial_holder {
+      display: none;
+      position: absolute;
+      width: 100%;
+      top: 60%;
+      left: -50px;
+      align-items: start;
+      .testimonial {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 284px;
+        padding: 24px;
+        gap: 21px;
+        border-radius: 16px;
+        border: 1px solid var(--Primary-Lighten, #ffdbb8);
+        background: var(--Secondary-Background, #fffdf4);
+
+        .testimonial_top {
+          display: flex;
+          gap: 25px;
+          align-items: center;
+          .face_pic_holder {
+            width: 65px;
+            height: 65px;
+            background-image: url("./img/testimonial_pic.jpg");
+            background-size: cover;
+            background-position: center;
+            border-radius: 45px;
+          }
+          .name_and_rating {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1 0 0;
+            .name {
+              color: var(--Text-Color, #252422);
+              font-family: Rubik;
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+            }
+            .rating {
+              display: flex;
+              gap: 0.5rem;
+
+              .rating_number {
+                color: var(--Text-Color, #252422);
+                font-family: Outfit;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+              }
+              .rating_star {
+                display: flex;
+                align-items: center;
+              }
+            }
+          }
+        }
+        .testimonial_text {
+          color: var(--Text-Color-Secondary, #403d39);
+          width: 236px;
+          font-family: Outfit;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 160%; /* 22.4px */
+        }
+      }
+      @media screen and (max-width: 1052px) {
+        display: flex;
+      }
+      @media screen and (max-width: 665px) {
+        left: 0;
+        justify-content: center;
+      }
+      @media screen and (max-width: 284px) {
+        display: none;
+      }
+    }
+  }
+  @media screen and (max-width: 1052px) {
+    flex-direction: column-reverse;
+    justify-content: center;
+    margin-top: 109px;
+  }
+}

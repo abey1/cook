@@ -1,9 +1,10 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
 }
 
-:root{
-    --primary: #D27722;
-    --primary-lighten: #FFDBB8;
+:root {
+  --primary: #d27722;
+  --primary-lighten: #ffdbb8;
+  --white: #ffffff;
 }
